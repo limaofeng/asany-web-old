@@ -1,0 +1,91 @@
+# 查询单个组织
+query organizationSelect(
+  $id: ID! = 1
+  $page: Int = 1
+  $pageSize: Int = 10
+  $orderBy: OrderBy
+  $filter: EmployeeFilter
+) {
+  organization(id: $id) {
+    employees(page: $page, pageSize: $pageSize, orderBy: $orderBy, filter: $filter) {
+      total: totalCount
+      pageSize
+      current: currentPage
+      edges {
+        node {
+          id
+          status
+          name
+          jobNumber
+          birthday
+          sex
+          mobile
+          tel
+           email{
+            id
+            status
+            email
+          }
+          departments {
+            name
+          }
+        }
+      }
+    }
+  }
+}
+
+# 查询组织下的部门
+query department($id: ID!) {
+  department(id: $id) {
+    id
+    sn
+    name
+    sort
+    jobs {
+      name
+      id
+    }
+    description
+    parent {
+      name
+      id
+    }
+    children {
+      name
+      id
+    }
+    organization {
+      name
+      id
+    }
+  }
+}
+# 新建部门
+mutation createDepartment($organization: ID, $input: DepartmentCreateInput!) {
+  createDepartment(organization: $organization, input: $input) {
+    id
+  }
+}
+
+# 删除部门
+mutation removeDepartment($id: ID!) {
+  removeDepartment(id: $id)
+}
+
+#更新部门
+mutation updateDepartment($id: ID!, $input: DepartmentUpdateInput!) {
+  updateDepartment(id: $id, input: $input) {
+    id
+  }
+}
+
+# 查询组织下的职务
+query queryJobs($id: ID!) {
+  organization(id: $id) {
+    jobs {
+      id
+      name
+    }
+  }
+}

@@ -1,0 +1,99 @@
+fragment PortalInfo on Portal {
+  id
+  name
+  component {
+    id
+    template
+    props
+  }
+  default
+  viewable
+  icon {
+    color
+    type
+    theme
+  }
+  system
+  useable
+  index
+  createdAt
+  updatedAt
+  description
+  creator {
+    id
+    name
+  }
+  modifier {
+    id
+    name
+  }
+  type
+  path
+}
+
+# 获取应用门户数据
+query queryPortals($applicationId: ID!) {
+  portals(applicationId: $applicationId) {
+    ...PortalInfo
+  }
+}
+
+# 创建门户
+mutation createPortal($input: PortalInput) {
+  portal: createPortal(input: $input) {
+    ...PortalInfo
+  }
+}
+
+# 批量创建门户
+mutation createPortals($inputs: [PortalInput]!) {
+  portal: createPortals(inputs: $inputs) {
+    ...PortalInfo
+  }
+}
+
+# 更新门户
+mutation updatePortal($id: ID!, $input: PortalInput) {
+  portal: updatePortal(id: $id, input: $input) {
+    ...PortalInfo
+  }
+}
+
+# 删除门户
+mutation removePortal($id: ID!) {
+  result: removePortal(id: $id)
+}
+
+# 查询门户路由数据
+query queryPortalRoutes($filter: RouteFilter) {
+  routes(filter: $filter) {
+    id
+    name
+    path
+    type
+    authorized
+    authority
+    hideInMenu
+    hideChildrenInMenu
+    hideInBreadcrumb
+    redirect
+    component {
+      id
+      props
+      template
+      routeWrapper {
+        id
+        props
+        template
+      }
+    }
+    icon
+    index
+    enabled
+    parent {
+      id
+      path
+    }
+    configuration
+  }
+}

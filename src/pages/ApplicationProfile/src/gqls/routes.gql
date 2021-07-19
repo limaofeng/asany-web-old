@@ -1,0 +1,75 @@
+fragment RouteParts on Route {
+  id
+  name
+  path
+  type
+  authorized
+  authority
+  hideInMenu
+  hideChildrenInMenu
+  hideInBreadcrumb
+  redirect
+  component {
+    id
+    template
+    props
+    routeWrapper {
+      id
+      template
+      props
+    }
+  }
+  icon
+  index
+  enabled
+  parent {
+    id
+    path
+  }
+  routes {
+    id
+  }
+  configuration
+}
+
+# 获取所有路由
+query allRoutes($path: String) {
+  routes(path: $path) {
+    ...RouteParts
+    title: name
+    subtitle: path
+  }
+}
+# 获取所有路由
+query route($id: ID) {
+  route(id: $id) {
+    ...RouteParts
+    title: name
+    subtitle: path
+  }
+}
+# 新建路由
+mutation createRoute($application: ID!,$input: RouteCreateInput!) {
+  route: createRoute(application: $application,input: $input) {
+    ...RouteParts
+    __typename
+  }
+}
+#删除路由
+mutation removeRoute($id: ID!) {
+  removeRoute(id: $id)
+}
+
+# 移动路由
+mutation moveRoute($id: ID!, $parent: ID, $location: Int!) {
+  route: moveRoute(id: $id, parentRoute: $parent, location: $location) {
+    ...RouteParts
+  }
+}
+
+#更新路由
+mutation updateRoute($id: ID!, $input: RouteUpdateInput!) {
+  route: updateRoute(id: $id, input: $input) {
+    ...RouteParts
+  }
+}

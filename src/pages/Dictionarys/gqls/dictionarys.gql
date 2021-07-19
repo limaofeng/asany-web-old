@@ -1,0 +1,101 @@
+query dataDictionarys($filter: DataDictionaryFilter, $page: Int, $pageSize: Int = 10) {
+  dataDictionarys(filter: $filter, page: $page, pageSize: $pageSize) {
+    total: totalCount
+    pageSize
+    current: currentPage
+    edges {
+      node {
+        id
+        code
+        type {
+          id
+          typeName:name
+        }
+        name
+        description
+        parent {
+          id
+          parentName: name
+        }
+      }
+    }
+  }
+}
+query dataDictionaryTypes {
+  dataDictionaryTypes {
+    id
+    name
+    layer
+    description
+    path
+    parent {
+      id
+      name
+      layer
+      description
+    }
+  }
+}
+# 删除
+mutation deleteDataDictionary($id: ID!) {
+  deleteDataDictionary(id: $id)
+}
+
+# 新建
+mutation creatDataDictionary($input: DataDictionaryInput!) {
+  creatDataDictionary(input: $input) {
+    id
+    code
+    type{
+      id
+    }
+    name
+  }
+}
+# 更新
+mutation updateDataDictionary($id: ID!, $input: DataDictionaryInput!) {
+  updateDataDictionary(id: $id, input: $input) {
+    id
+    code
+    type{
+      id
+    }
+    name
+    description
+    parent {
+      id
+      parentName: name
+    }
+  }
+}
+# 删除
+mutation deleteDictionaryType($id: ID!) {
+  deleteDictionaryType(id: $id)
+}
+# 新建
+mutation creatDictionaryType($dataDictionaryType: DataDictionaryTypeInput!) {
+  creatDictionaryType(input: $dataDictionaryType) {
+    id
+    name
+    parent {
+      id
+      name
+    }
+  }
+}
+# 更新
+mutation updateDictionaryType($id: ID!, $dataDictionaryType: DataDictionaryTypeInput!) {
+  updateDictionaryType(id: $id, input: $dataDictionaryType) {
+    id
+    name
+    layer
+    description
+    path
+    parent {
+      id
+      name
+      layer
+      description
+    }
+  }
+}

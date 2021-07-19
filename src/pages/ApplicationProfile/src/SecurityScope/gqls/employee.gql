@@ -1,0 +1,67 @@
+query loadSecurityScopes($ids: [ID]) {
+  securityScopes(ids: $ids) {
+    id
+    type
+    value {
+      ... on Role {
+        id
+        name
+      }
+      ... on Department {
+        id
+        name
+      }
+      ... on User {
+        id
+        name: nickName
+      }
+      ... on Employee {
+        id
+        name
+      }
+      ... on Organization {
+        id
+        name
+      }
+    }
+  }
+}
+#搜索用户
+query employees($organization: ID!, $filter: EmployeeFilter,$pageSize: Int = 200,$page: Int = 1) {
+  employees(organization: $organization, filter: $filter,pageSize:$pageSize,page:$page) {
+    edges {
+      node {
+        id
+        name
+      }
+    }
+  }
+}
+query departments($organization: ID!) {
+  departments(organization: $organization) {
+    id
+    name
+    path
+    parent {
+      id
+      name
+    }
+  }
+}
+query employeeGroups($scope: String!) {
+  employeeGroups(scope: $scope) {
+    name
+    id
+    enabled
+    description
+  }
+}
+#角色查询
+query queryRoles($organization: ID!) {
+  roles(organization: $organization) {
+    id
+    name
+    enabled
+    description
+  }
+}

@@ -1,0 +1,34 @@
+[
+  {
+    "name": "ID",
+    "type": "SCALAR"
+  },
+  {
+    "name": "String",
+    "type": "SCALAR"
+  },
+  {
+    "name": "Int",
+    "type": "SCALAR"
+  },
+  {
+    "name": "Float",
+    "type": "SCALAR"
+  },
+  {
+    "name": "Boolean",
+    "type": "SCALAR"
+  },
+  {
+    "name": "Date",
+    "type": "SCALAR"
+  },
+  {
+    "name": "File",
+    "type": "SCALAR"
+  },
+  {
+    "name": "JSON",
+    "type": "SCALAR"
+  }
+]

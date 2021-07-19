@@ -1,0 +1,40 @@
+#查询全部组织信息
+query getOrgs {
+  organizations {
+    id
+    name
+    creator
+    modifier
+    createdAt
+    updatedAt
+  }
+}
+
+#新建组织
+mutation createOrg($input: OrganizationCreateInput!) {
+  organization: createOrganization(input: $input) {
+    id
+    name
+    creator
+    modifier
+    createdAt
+    updatedAt
+  }
+}
+
+#删除单条组织
+mutation deleteOrg($id: ID!) {
+  removeOrganization(id: $id)
+}
+
+#更新组织
+mutation updateOrg($id: ID!, $input: OrganizationUpdateInput!) {
+  organization: updateOrganization(id: $id, input: $input) {
+    id
+    name
+    creator
+    modifier
+    createdAt
+    updatedAt
+  }
+}

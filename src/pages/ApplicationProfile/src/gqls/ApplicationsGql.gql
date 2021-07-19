@@ -1,0 +1,22 @@
+query applications {
+  apps: applications {
+    id
+    name
+    logo
+    path
+    starrable(starType: favorite) {
+      viewerHasStarred
+    }
+  }
+}
+
+
+mutation createFavorite($uid: ID!, $value: String!) {
+  addStar(uid: $uid, starType: "most_used_apps", galaxy: $value) {
+    id
+  }
+}
+
+mutation removeFavorite($id: ID!) {
+  removeStar(id: $id)
+}

@@ -1,0 +1,144 @@
+:global {
+  #desktop {
+    display: none;
+    &.fullscreen {
+      display: block;
+
+      .panel-body {
+        height: calc(100vh - 59px);
+        overflow: auto;
+      }
+    }
+  }
+
+  .searchInput {
+    text-align: center;
+    border-radius: 20px;
+    .ant-input-affix-wrapper .ant-input:not(:last-child) {
+      // background-color: #2c5082;
+      // border-color:#365b91;
+      border-radius: 20px;
+    }
+  }
+  .mauto {
+    margin: 0 auto;
+  }
+  .mega-dropdown {
+    & > .dropdown-menu.mega-dropdown-menu {
+      right: 0 !important;
+      left: -220px !important;
+      min-height: 1050px;
+      padding: 0;
+      background-color: white;
+      border-radius: 0 !important;
+      & > .desktop {
+        display: flex;
+        justify-content: center;
+      }
+      & > .SortableFlex {
+        display: flex;
+        justify-content: center;
+      }
+    }
+  }
+}
+
+.appContainer {
+  display: flex;
+  flex-wrap: wrap;
+  align-content: flex-start;
+  // padding: 50px 0 50px 0;
+  // max-width: 1050px;
+
+  :global {
+    .sortedBox {
+      background: black;
+    }
+    .appIcon {
+      display: flex;
+
+      align-items: center;
+      justify-content: center;
+      width: 150px;
+      height: 150px;
+      img {
+        border-radius: 10px;
+      }
+      p {
+        width: 80px;
+        margin-top: 10px;
+        text-align: center;
+      }
+      .noLike {
+        position: absolute;
+        bottom: 50px;
+        left: 34px;
+        display: none;
+        width: 84px;
+        font-size: 13px;
+        text-align: center;
+      }
+      .yesLike {
+        position: absolute;
+        bottom: 50px;
+        left: 34px;
+        display: none;
+        width: 84px;
+        font-size: 13px;
+        text-align: center;
+      }
+      &:hover {
+        .yesLike {
+          display: block;
+          color: #fff;
+          background-color: rgba(0, 0, 0, 0.65);
+        }
+        .noLike {
+          display: block;
+          color: #fff;
+          background-color: rgba(0, 0, 0, 0.65);
+        }
+      }
+    }
+
+    .waitIcon {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 150px;
+      height: 150px;
+      img {
+        border-radius: 10px;
+      }
+      p {
+        margin-top: 10px;
+        text-align: center;
+      }
+    }
+    .waitIcon::after {
+      width: 84px;
+      height: 84px;
+      color: #e8e8e8;
+      font-size: 17px;
+      line-height: 84px;
+      text-align: center;
+      border: 2px solid #e8e8e8;
+      border-radius: 10px;
+      content: '+';
+    }
+  }
+}
+
+.height150 {
+  height: 150px;
+  overflow: hidden;
+}
+
+.height300 {
+  height: 300px;
+  overflow: auto;
+}
+
+.m20 {
+  margin: 20px 0;
+}
