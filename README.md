@@ -20,9 +20,7 @@ npm install @types/qrcode.react raw-loader --save-dev
 
 ```
 PORT=8000
-FILESERVER_URL=http://middle.thuni-h.com/graphql
-FILESERVER_UPLOADURL=http://middle.thuni-h.com/files
-GRAPHQL_URL=http://nuwa.new.thuni-h.com/graphql
+GRAPHQL_URL=http://api.asany.cn/graphql
 APPID=5cc2a9d305297b47dc26c5da
 BROWSER=none
 USE_REMOTE_IP=true
