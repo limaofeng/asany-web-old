@@ -11,6 +11,7 @@ export default defineConfig({
   },
   hash: true,
   antd: {},
+  mfsu: { production: { output: '.mfsu-production' } },
   dva: {
     hmr: true,
   },
